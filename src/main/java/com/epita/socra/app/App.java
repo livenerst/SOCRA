@@ -23,12 +23,18 @@ public final class App {
      */
     public static void main(String[] args) {
         App application = new App();
-        application.run();
+        RomanConverter romanConverter = new RomanConverter();
+        Adder adder = new Adder();
+        application.run(adder);
     }
 
-    public void run(){
-        adapter.write("Hello, what's your name ?");
-        String name = adapter.read();
-        adapter.write("Nice to meet you, " + name + " !");
+
+    public void run(StringConverter arab2Roman){
+        do {
+            adapter.write("> ");
+            String number = adapter.read();
+            String roman = arab2Roman.convert(number);
+            adapter.write(roman);
+        } while(true);
     }
 }
